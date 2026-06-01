@@ -1,9 +1,9 @@
 export default function HaloLogo({ size = 'md', className = '' }: { size?: 'sm' | 'md' | 'lg' | 'xl'; className?: string }) {
   const sizes = {
-    sm: { width: 120, height: 60 },
-    md: { width: 180, height: 90 },
-    lg: { width: 260, height: 130 },
-    xl: { width: 360, height: 180 },
+    sm:  { width: 140, height: 56 },
+    md:  { width: 220, height: 88 },
+    lg:  { width: 320, height: 128 },
+    xl:  { width: 460, height: 184 },
   };
   const { width, height } = sizes[size];
 
@@ -11,7 +11,7 @@ export default function HaloLogo({ size = 'md', className = '' }: { size?: 'sm' 
     <svg
       width={width}
       height={height}
-      viewBox="0 0 360 180"
+      viewBox="0 0 460 184"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="Halo Audio"
@@ -19,105 +19,83 @@ export default function HaloLogo({ size = 'md', className = '' }: { size?: 'sm' 
       className={className}
     >
       <defs>
-        {/* Gold gradient for arc and accents */}
-        <linearGradient id="goldArc" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#A08820" stopOpacity="0.4" />
-          <stop offset="40%" stopColor="#D4AF37" stopOpacity="1" />
-          <stop offset="70%" stopColor="#F5E27A" stopOpacity="1" />
-          <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.8" />
-        </linearGradient>
-        {/* Silver gradient for HALO text */}
-        <linearGradient id="silverText" x1="0%" y1="0%" x2="0%" y2="100%">
+        <linearGradient id={`silverText-${size}`} x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="#FFFFFF" />
-          <stop offset="40%" stopColor="#E8E8E8" />
-          <stop offset="100%" stopColor="#B0B0B0" />
+          <stop offset="35%" stopColor="#F0F0F0" />
+          <stop offset="70%" stopColor="#C8C8C8" />
+          <stop offset="100%" stopColor="#A0A0A0" />
         </linearGradient>
-        {/* Gold gradient for AUDIO text */}
-        <linearGradient id="goldText" x1="0%" y1="0%" x2="0%" y2="100%">
+        <linearGradient id={`goldText-${size}`} x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="#F5E27A" />
           <stop offset="50%" stopColor="#D4AF37" />
           <stop offset="100%" stopColor="#A08820" />
         </linearGradient>
-        {/* Glow filter */}
-        <filter id="arcGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
+        <linearGradient id={`goldLine-${size}`} x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#A08820" stopOpacity="0.2" />
+          <stop offset="50%" stopColor="#D4AF37" stopOpacity="1" />
+          <stop offset="100%" stopColor="#A08820" stopOpacity="0.2" />
+        </linearGradient>
+        <filter id={`textGlow-${size}`}>
+          <feGaussianBlur stdDeviation="2" result="blur" />
           <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
         </filter>
       </defs>
 
-      {/* Halo arc — outer sweep */}
-      <path
-        d="M 30 120 Q 80 10 200 30 Q 300 45 340 80"
-        stroke="url(#goldArc)"
-        strokeWidth="2.5"
-        fill="none"
-        filter="url(#arcGlow)"
-        strokeLinecap="round"
-      />
-      {/* Halo arc — inner sweep (tighter) */}
-      <path
-        d="M 50 125 Q 95 25 205 42 Q 295 55 335 88"
-        stroke="url(#goldArc)"
-        strokeWidth="1.2"
-        fill="none"
-        strokeLinecap="round"
-        opacity="0.6"
-      />
-
-      {/* HALO — main text */}
+      {/* HALO */}
       <text
-        x="180"
-        y="108"
+        x="230"
+        y="98"
         textAnchor="middle"
         fontFamily="'Georgia', 'Times New Roman', serif"
         fontWeight="700"
-        fontSize="68"
-        letterSpacing="6"
-        fill="url(#silverText)"
+        fontSize="90"
+        letterSpacing="8"
+        fill={`url(#silverText-${size})`}
+        filter={`url(#textGlow-${size})`}
       >
         HALO
       </text>
 
       {/* Decorative lines flanking AUDIO */}
-      <line x1="38" y1="122" x2="88" y2="122" stroke="url(#goldText)" strokeWidth="1" opacity="0.8" />
-      <line x1="272" y1="122" x2="322" y2="122" stroke="url(#goldText)" strokeWidth="1" opacity="0.8" />
+      <line x1="40"  y1="118" x2="118" y2="118" stroke={`url(#goldLine-${size})`} strokeWidth="1" />
+      <line x1="342" y1="118" x2="420" y2="118" stroke={`url(#goldLine-${size})`} strokeWidth="1" />
 
-      {/* AUDIO text */}
+      {/* AUDIO */}
       <text
-        x="180"
-        y="133"
+        x="230"
+        y="130"
         textAnchor="middle"
         fontFamily="'Georgia', 'Times New Roman', serif"
         fontWeight="400"
-        fontSize="22"
-        letterSpacing="12"
-        fill="url(#goldText)"
+        fontSize="24"
+        letterSpacing="16"
+        fill={`url(#goldText-${size})`}
       >
         AUDIO
       </text>
 
-      {/* Decorative lines flanking waveform */}
-      <line x1="52" y1="150" x2="118" y2="150" stroke="url(#goldText)" strokeWidth="0.8" opacity="0.5" />
-      <line x1="242" y1="150" x2="308" y2="150" stroke="url(#goldText)" strokeWidth="0.8" opacity="0.5" />
+      {/* Waveform decorative lines */}
+      <line x1="58"  y1="158" x2="148" y2="158" stroke={`url(#goldLine-${size})`} strokeWidth="0.8" opacity="0.6" />
+      <line x1="312" y1="158" x2="402" y2="158" stroke={`url(#goldLine-${size})`} strokeWidth="0.8" opacity="0.6" />
       {/* Diamond dots */}
-      <rect x="114" y="148" width="3" height="3" fill="#D4AF37" opacity="0.7" transform="rotate(45 115.5 149.5)" />
-      <rect x="243" y="148" width="3" height="3" fill="#D4AF37" opacity="0.7" transform="rotate(45 244.5 149.5)" />
+      <rect x="144" y="156" width="3.5" height="3.5" fill="#D4AF37" opacity="0.8" transform="rotate(45 145.75 157.75)" />
+      <rect x="312" y="156" width="3.5" height="3.5" fill="#D4AF37" opacity="0.8" transform="rotate(45 313.75 157.75)" />
 
       {/* Waveform bars */}
       {[
-        [130, 6], [136, 10], [142, 14], [148, 10], [154, 16], [160, 12],
-        [166, 18], [172, 14], [178, 20], [184, 14], [190, 18], [196, 12],
-        [202, 16], [208, 10], [214, 14], [220, 10], [226, 6],
+        [158,5],[163,9],[168,13],[173,9],[178,16],[183,11],
+        [188,19],[193,14],[198,22],[203,16],[208,22],[213,14],
+        [218,19],[223,11],[228,16],[233,9],[238,13],[243,9],[248,5],
       ].map(([x, h], i) => (
         <rect
           key={i}
           x={x}
-          y={150 - h / 2}
-          width="3"
+          y={158 - (h as number) / 2}
+          width="3.5"
           height={h}
-          rx="1"
-          fill="url(#goldText)"
-          opacity="0.9"
+          rx="1.5"
+          fill={`url(#goldText-${size})`}
+          opacity="0.95"
         />
       ))}
     </svg>
