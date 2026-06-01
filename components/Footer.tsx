@@ -1,4 +1,6 @@
 'use client';
+import HaloLogo from '@/components/HaloLogo';
+
 const footerLinks = [
   { heading: 'Services', links: [{ label: 'Brand Anthem™', href: '#services' }, { label: 'Website Atmosphere™', href: '#services' }, { label: 'Radio Ad System™', href: '#services' }, { label: 'Social Sound Pack™', href: '#services' }, { label: 'Podcast Identity™', href: '#services' }, { label: 'Halo Signature™', href: '#services' }] },
   { heading: 'Company', links: [{ label: 'How It Works', href: '#how-it-works' }, { label: 'Pricing', href: '#pricing' }, { label: 'Client Stories', href: '#testimonials' }, { label: 'FAQ', href: '#faq' }] },
@@ -11,11 +13,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="relative w-8 h-8"><div className="absolute inset-0 rounded-full border border-halo-gold/60" /><div className="absolute inset-1 rounded-full border border-halo-gold/30" /><div className="absolute inset-0 flex items-center justify-center"><div className="w-2 h-2 rounded-full bg-halo-gold" /></div></div>
-              <span className="font-display font-bold text-xl">HALO <span className="text-halo-gold">AUDIO</span></span>
+            <div className="mb-6">
+              <HaloLogo size="md" />
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">The Sound Department For Small Businesses. We create custom audio branding that makes your business unforgettable.</p>
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              The Sound Department For Small Businesses. We create custom audio branding that makes your business unforgettable.
+            </p>
             <p className="text-halo-gold text-xs font-semibold tracking-widest uppercase">Your brand. Heard.</p>
           </div>
           {footerLinks.map((col) => (
