@@ -8,17 +8,41 @@ export function getAudioEl() { return audioEl; }
 
 export default function MusicButton() {
   const [playing, setPlaying] = useState(false);
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (!audioEl) {
       audioEl = new Audio('/Halo Audio. .mp3');
       audioEl.loop = true;
-      audioEl.volume = 0.55;
-      audioEl.addEventListener('canplaythrough', () => setReady(true), { once: true });
-    } else {
-      setReady(true);
+      audioEl.volume = 0;
     }
+
+    // Browsers block autoplay until the user interacts with the page.
+    // Start on whichever interaction fires first, then fade in.
+    const start = () => {
+      if (!audioEl || playing) return;
+      audioEl.play().then(() => {
+        setPlaying(true);
+        // Fade in from 0 to 0.55
+        let vol = 0;
+        const fade = setInterval(() => {
+          vol = Math.min(vol + 0.01, 0.55);
+          if (audioEl) audioEl.volume = vol;
+          if (vol >= 0.55) clearInterval(fade);
+        }, 40);
+      }).catch(() => {});
+    };
+
+    window.addEventListener('scroll',  start, { once: true, passive: true });
+    window.addEventListener('click',   start, { once: true });
+    window.addEventListener('keydown', start, { once: true });
+    window.addEventListener('touchstart', start, { once: true, passive: true });
+
+    return () => {
+      window.removeEventListener('scroll',  start);
+      window.removeEventListener('click',   start);
+      window.removeEventListener('keydown', start);
+      window.removeEventListener('touchstart', start);
+    };
   }, []);
 
   const toggle = () => {
