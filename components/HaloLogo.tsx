@@ -17,6 +17,7 @@ export default function HaloLogo({ size = 'md', className = '' }: { size?: 'sm' 
       aria-label="Halo Audio"
       role="img"
       className={className}
+      style={{ maxWidth: '90vw', height: 'auto' }}
     >
       <defs>
         <linearGradient id={`silverText-${size}`} x1="0%" y1="0%" x2="0%" y2="100%">
@@ -77,7 +78,6 @@ export default function HaloLogo({ size = 'md', className = '' }: { size?: 'sm' 
       {/* Waveform decorative lines */}
       <line x1="58"  y1="158" x2="148" y2="158" stroke={`url(#goldLine-${size})`} strokeWidth="0.8" opacity="0.6" />
       <line x1="312" y1="158" x2="402" y2="158" stroke={`url(#goldLine-${size})`} strokeWidth="0.8" opacity="0.6" />
-      {/* Diamond dots */}
       <rect x="144" y="156" width="3.5" height="3.5" fill="#D4AF37" opacity="0.8" transform="rotate(45 145.75 157.75)" />
       <rect x="312" y="156" width="3.5" height="3.5" fill="#D4AF37" opacity="0.8" transform="rotate(45 313.75 157.75)" />
 

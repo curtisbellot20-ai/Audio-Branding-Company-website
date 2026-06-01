@@ -53,7 +53,6 @@ function HeroSoundbar() {
       const barW = (canvas.width - gap * (totalBars - 1)) / totalBars;
       const centerY = canvas.height / 2;
 
-      if (analyser) wireAnalyser();
       const hasRealData = analyser !== null;
       if (hasRealData) analyser!.getByteFrequencyData(dataArray);
 
@@ -128,7 +127,6 @@ function ParticleField() {
 
 export default function Hero() {
   useEffect(() => {
-    // Wire analyser as soon as user interacts (audio element is ready)
     const onInteract = () => wireAnalyser();
     window.addEventListener('click', onInteract, { once: true });
     return () => window.removeEventListener('click', onInteract);
@@ -141,9 +139,10 @@ export default function Hero() {
 
       <div aria-hidden="true" className="absolute inset-0 opacity-35"><HeroSoundbar /></div>
 
-      {[600, 420, 260].map((s, i) => (
+      {/* Two rings using vmin so they stay perfectly circular on all screen sizes */}
+      {[70, 44].map((s, i) => (
         <div key={s} aria-hidden="true" className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="halo-ring" style={{ width: s, height: s, animationDelay: `${i * 0.8}s` }} />
+          <div className="halo-ring" style={{ width: `${s}vmin`, height: `${s}vmin`, animationDelay: `${i * 0.8}s` }} />
         </div>
       ))}
 
@@ -153,8 +152,13 @@ export default function Hero() {
 
       <ParticleField />
 
-      <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto px-6 pt-24 pb-20">
-        <motion.div initial={{ opacity: 0, scale: 0.8, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }} className="mb-4">
+      <div className="relative z-10 flex flex-col items-center w-full max-w-4xl mx-auto px-6 pt-24 pb-20">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-4 flex justify-center w-full"
+        >
           <HaloLogo size="xl" />
         </motion.div>
 
