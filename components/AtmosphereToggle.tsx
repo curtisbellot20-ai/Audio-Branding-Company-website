@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 let audioEl: HTMLAudioElement | null = null;
@@ -9,11 +9,10 @@ export function getAudioEl() { return audioEl; }
 export default function MusicButton() {
   const [playing, setPlaying] = useState(false);
   const [ready, setReady] = useState(false);
-  const initialised = useRef(false);
 
   useEffect(() => {
     if (!audioEl) {
-      audioEl = new Audio('/atmosphere.mp3');
+      audioEl = new Audio('/Halo Audio. .mp3');
       audioEl.loop = true;
       audioEl.volume = 0.55;
       audioEl.addEventListener('canplaythrough', () => setReady(true), { once: true });
