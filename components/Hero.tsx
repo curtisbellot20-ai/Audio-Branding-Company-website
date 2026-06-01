@@ -1,44 +1,28 @@
 'use client';
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import HaloLogo from '@/components/HaloLogo';
+import { getAudioEl } from '@/components/AtmosphereToggle';
 
-// Shared audio context refs — module-level so they survive re-renders
+let analyser: AnalyserNode | null = null;
 let audioCtx: AudioContext | null = null;
 let audioSource: MediaElementAudioSourceNode | null = null;
-let analyser: AnalyserNode | null = null;
-let audioEl: HTMLAudioElement | null = null;
-let started = false;
+let wired = false;
 
 export function getAnalyser() { return analyser; }
-export function getAudioEl() { return audioEl; }
 
-function initAudio() {
-  if (started) return;
-  started = true;
-
-  audioEl = new Audio('/atmosphere.mp3');
-  audioEl.loop = true;
-  audioEl.volume = 0;
-
+function wireAnalyser() {
+  if (wired) return;
+  const el = getAudioEl();
+  if (!el) return;
+  wired = true;
   audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
   analyser = audioCtx.createAnalyser();
   analyser.fftSize = 256;
   analyser.smoothingTimeConstant = 0.82;
-
-  audioSource = audioCtx.createMediaElementSource(audioEl);
+  audioSource = audioCtx.createMediaElementSource(el);
   audioSource.connect(analyser);
   analyser.connect(audioCtx.destination);
-
-  audioEl.play().catch(() => {});
-
-  // Fade in over 3 seconds
-  let vol = 0;
-  const fadeIn = setInterval(() => {
-    vol = Math.min(vol + 0.008, 0.55);
-    if (audioEl) audioEl.volume = vol;
-    if (vol >= 0.55) clearInterval(fadeIn);
-  }, 40);
 }
 
 function HeroSoundbar() {
@@ -69,18 +53,15 @@ function HeroSoundbar() {
       const barW = (canvas.width - gap * (totalBars - 1)) / totalBars;
       const centerY = canvas.height / 2;
 
-      // Pull real frequency data if analyser is ready
+      if (analyser) wireAnalyser();
       const hasRealData = analyser !== null;
       if (hasRealData) analyser!.getByteFrequencyData(dataArray);
 
       for (let i = 0; i < totalBars; i++) {
         let amp: number;
-
         if (hasRealData) {
-          // Map bar index to frequency bin
           const binIndex = Math.floor((i / totalBars) * (dataArray.length * 0.7));
           const raw = dataArray[binIndex] / 255;
-          // Blend real data with a gentle wave to keep it lively even in quiet parts
           const phase = (i / totalBars) * Math.PI * 4;
           const wave = Math.abs(Math.sin(phase + t * 0.8)) * 0.15;
           amp = raw * 0.85 + wave;
@@ -94,9 +75,8 @@ function HeroSoundbar() {
         }
 
         const barH = amp * canvas.height * 0.78 + 4;
-
-        const grad = ctx.createLinearGradient(x, centerY - barH, x, centerY + barH);
         const x = i * (barW + gap);
+        const grad = ctx.createLinearGradient(x, centerY - barH, x, centerY + barH);
         grad.addColorStop(0,   'rgba(212,175,55,0)');
         grad.addColorStop(0.15,`rgba(212,175,55,${0.25 + amp * 0.35})`);
         grad.addColorStop(0.5, `rgba(245,226,122,${0.65 + amp * 0.35})`);
@@ -147,34 +127,11 @@ function ParticleField() {
 }
 
 export default function Hero() {
-  const hasInteracted = useRef(false);
-
-  const handleFirstInteraction = useCallback(() => {
-    if (hasInteracted.current) return;
-    hasInteracted.current = true;
-    initAudio();
-  }, []);
-
   useEffect(() => {
-    // Start on any interaction: scroll, click, or keydown
-    window.addEventListener('scroll',  handleFirstInteraction, { once: true, passive: true });
-    window.addEventListener('click',   handleFirstInteraction, { once: true });
-    window.addEventListener('keydown', handleFirstInteraction, { once: true });
-    return () => {
-      window.removeEventListener('scroll',  handleFirstInteraction);
-      window.removeEventListener('click',   handleFirstInteraction);
-      window.removeEventListener('keydown', handleFirstInteraction);
-    };
-  }, [handleFirstInteraction]);
-
-  // Pause when tab hidden, resume when visible
-  useEffect(() => {
-    const handleVisibility = () => {
-      if (!audioEl) return;
-      document.hidden ? audioEl.pause() : audioEl.play().catch(() => {});
-    };
-    document.addEventListener('visibilitychange', handleVisibility);
-    return () => document.removeEventListener('visibilitychange', handleVisibility);
+    // Wire analyser as soon as user interacts (audio element is ready)
+    const onInteract = () => wireAnalyser();
+    window.addEventListener('click', onInteract, { once: true });
+    return () => window.removeEventListener('click', onInteract);
   }, []);
 
   return (

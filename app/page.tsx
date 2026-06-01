@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import TheProblem from '@/components/TheProblem';
@@ -16,24 +15,14 @@ import FAQ from '@/components/FAQ';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 import HaloCursor from '@/components/HaloCursor';
-import AtmosphereToggle from '@/components/AtmosphereToggle';
+import MusicButton from '@/components/AtmosphereToggle';
 
 export default function Home() {
-  const [atmosphereMode, setAtmosphereMode] = useState(false);
-
-  useEffect(() => {
-    if (atmosphereMode) {
-      document.body.classList.add('atmosphere-mode');
-    } else {
-      document.body.classList.remove('atmosphere-mode');
-    }
-  }, [atmosphereMode]);
-
   return (
     <main className="relative">
       <HaloCursor />
-      <Navigation atmosphereMode={atmosphereMode} />
-      <AtmosphereToggle enabled={atmosphereMode} onToggle={() => setAtmosphereMode((v) => !v)} />
+      <Navigation atmosphereMode={false} />
+      <MusicButton />
       <Hero />
       <TheProblem />
       <SoundJourney />
