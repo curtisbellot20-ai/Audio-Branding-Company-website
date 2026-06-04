@@ -2,9 +2,35 @@
 import HaloLogo from '@/components/HaloLogo';
 
 const footerLinks = [
-  { heading: 'Services', links: [{ label: 'Brand Anthem™', href: '#services' }, { label: 'Website Atmosphere™', href: '#services' }, { label: 'Radio Ad System™', href: '#services' }, { label: 'Social Sound Pack™', href: '#services' }, { label: 'Podcast Identity™', href: '#services' }, { label: 'Halo Signature™', href: '#services' }] },
-  { heading: 'Company', links: [{ label: 'How It Works', href: '#how-it-works' }, { label: 'Pricing', href: '#pricing' }, { label: 'Client Stories', href: '#testimonials' }, { label: 'FAQ', href: '#faq' }] },
-  { heading: 'Legal', links: [{ label: 'Privacy Policy', href: '/legal/privacy' }, { label: 'Terms of Service', href: '/legal/terms' }, { label: 'Refund Policy', href: '/legal/refund' }, { label: 'Commercial License', href: '/legal/license' }, { label: 'AI Audio Disclosure', href: '/legal/ai-disclosure' }] },
+  {
+    heading: 'Services',
+    links: [
+      { label: 'Custom Audio Branding Songs', href: '#services' },
+      { label: 'Custom Jingles', href: '#services' },
+      { label: 'Halo Essential', href: '#pricing' },
+      { label: 'Halo Signature', href: '#pricing' },
+      { label: 'Halo Growth Club', href: '#pricing' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { label: 'How It Works', href: '#how-it-works' },
+      { label: 'Pricing', href: '#pricing' },
+      { label: 'Client Stories', href: '#testimonials' },
+      { label: 'FAQ', href: '#faq' },
+    ],
+  },
+  {
+    heading: 'Legal',
+    links: [
+      { label: 'Privacy Policy', href: '/legal/privacy' },
+      { label: 'Terms of Service', href: '/legal/terms' },
+      { label: 'Refund Policy', href: '/legal/refund' },
+      { label: 'Commercial License', href: '/legal/license' },
+      { label: 'AI Audio Disclosure', href: '/legal/ai-disclosure' },
+    ],
+  },
 ];
 
 export default function Footer() {
@@ -19,12 +45,29 @@ export default function Footer() {
             <p className="text-gray-600 text-sm leading-relaxed mb-4">
               The Sound Department For Small Businesses. We create custom audio branding that makes your business unforgettable.
             </p>
-            <p className="text-halo-gold text-xs font-semibold tracking-widest uppercase">Your brand. Heard.</p>
+            <p className="text-halo-gold text-xs font-semibold tracking-widest uppercase mb-6">Your brand. Heard.</p>
+            <div className="flex flex-col gap-2">
+              <a href="mailto:myhaloaudio@gmail.com" className="text-gray-500 hover:text-halo-gold text-sm transition-colors duration-200">
+                myhaloaudio@gmail.com
+              </a>
+              <a href="https://instagram.com/halo_audio" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-halo-gold text-sm transition-colors duration-200">
+                @halo_audio
+              </a>
+              <a href="mailto:myhaloaudio@gmail.com" className="mt-2 btn-gold text-center py-2.5 px-4 text-sm font-bold rounded-lg">
+                DM Or Email Me
+              </a>
+            </div>
           </div>
           {footerLinks.map((col) => (
             <nav key={col.heading} aria-label={col.heading}>
               <h3 className="text-white font-semibold text-sm mb-5 tracking-wide">{col.heading}</h3>
-              <ul className="space-y-3">{col.links.map((link) => (<li key={link.label}><a href={link.href} className="text-gray-600 hover:text-halo-gold text-sm transition-colors duration-200">{link.label}</a></li>))}</ul>
+              <ul className="space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className="text-gray-600 hover:text-halo-gold text-sm transition-colors duration-200">{link.label}</a>
+                  </li>
+                ))}
+              </ul>
             </nav>
           ))}
         </div>
