@@ -46,15 +46,13 @@ export default function Footer() {
               The Sound Department For Small Businesses. We create custom audio branding that makes your business unforgettable.
             </p>
             <p className="text-halo-gold text-xs font-semibold tracking-widest uppercase mb-6">Your brand. Heard.</p>
+            <p className="text-white text-sm font-semibold mb-3">Contact Us</p>
             <div className="flex flex-col gap-2">
               <a href="mailto:myhaloaudio@gmail.com" className="text-gray-500 hover:text-halo-gold text-sm transition-colors duration-200">
                 myhaloaudio@gmail.com
               </a>
               <a href="https://instagram.com/halo_audio" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-halo-gold text-sm transition-colors duration-200">
                 @halo_audio
-              </a>
-              <a href="mailto:myhaloaudio@gmail.com" className="mt-2 btn-gold text-center py-2.5 px-4 text-sm font-bold rounded-lg">
-                DM Or Email Me
               </a>
             </div>
           </div>
