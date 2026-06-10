@@ -9,11 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'halo-black': '#0A0A0A',
-        'halo-dark': '#141414',
-        'halo-gold': '#D4AF37',
-        'halo-gold-light': '#E8C84A',
-        'halo-gold-dim': '#A08820',
+        'halo-black': '#161616',
+        'halo-dark': '#1F1F1E',
+        'halo-ivory': '#F7F4ED',
+        'halo-navy': '#1B2A4A',
+        'halo-gold': '#C9A961',
+        'halo-gold-light': '#DCC68C',
+        'halo-gold-dim': '#9C8147',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
@@ -41,8 +43,8 @@ const config: Config = {
           '50%': { scaleY: '1.8' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(212,175,55,0.3)' },
-          '100%': { boxShadow: '0 0 60px rgba(212,175,55,0.7)' },
+          '0%': { boxShadow: '0 0 20px rgba(201,169,97,0.25)' },
+          '100%': { boxShadow: '0 0 50px rgba(201,169,97,0.55)' },
         },
         fadeUp: {
           '0%': { opacity: '0', transform: 'translateY(30px)' },
@@ -54,9 +56,9 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        'gold-gradient': 'linear-gradient(135deg, #D4AF37, #A08820, #D4AF37)',
-        'dark-gradient': 'linear-gradient(180deg, #0A0A0A 0%, #141414 50%, #0A0A0A 100%)',
-        'radial-gold': 'radial-gradient(ellipse at center, rgba(212,175,55,0.15) 0%, transparent 70%)',
+        'gold-gradient': 'linear-gradient(135deg, #C9A961, #9C8147, #C9A961)',
+        'dark-gradient': 'linear-gradient(180deg, #161616 0%, #1F1F1E 50%, #161616 100%)',
+        'radial-gold': 'radial-gradient(ellipse at center, rgba(201,169,97,0.12) 0%, transparent 70%)',
       },
     },
   },

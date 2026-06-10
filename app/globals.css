@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --gold: #D4AF37;
-  --gold-glow: rgba(212, 175, 55, 0.4);
-  --gold-dim: rgba(212, 175, 55, 0.15);
-  --black: #0A0A0A;
-  --dark: #141414;
+  --gold: #C9A961;
+  --gold-glow: rgba(201, 169, 97, 0.35);
+  --gold-dim: rgba(201, 169, 97, 0.12);
+  --black: #161616;
+  --dark: #1F1F1E;
+  --ivory: #F7F4ED;
+  --navy: #1B2A4A;
 }
 
 * { box-sizing: border-box; }
@@ -16,19 +18,19 @@ html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--black);
-  color: #ffffff;
+  color: #F2F0EC;
   font-family: var(--font-inter), system-ui, sans-serif;
   overflow-x: hidden;
 }
 
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #0A0A0A; }
-::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #161616; }
+::-webkit-scrollbar-thumb { background: #C9A961; border-radius: 2px; }
 
 .halo-cursor-active * { cursor: none !important; }
 
 .gold-shimmer {
-  background: linear-gradient(90deg, #D4AF37 0%, #F5E27A 40%, #D4AF37 60%, #A08820 100%);
+  background: linear-gradient(90deg, #C9A961 0%, #DCC68C 40%, #C9A961 60%, #9C8147 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -64,36 +66,36 @@ body {
 
 .halo-ring {
   border-radius: 50%;
-  border: 1px solid rgba(212,175,55,0.3);
-  box-shadow: 0 0 40px rgba(212,175,55,0.15), inset 0 0 40px rgba(212,175,55,0.05);
+  border: 1px solid rgba(201,169,97,0.2);
+  box-shadow: 0 0 30px rgba(201,169,97,0.08), inset 0 0 30px rgba(201,169,97,0.04);
   animation: haloPulse 4s ease-in-out infinite;
 }
 
 @keyframes haloPulse {
-  0%, 100% { box-shadow: 0 0 40px rgba(212,175,55,0.15), inset 0 0 40px rgba(212,175,55,0.05); opacity: 0.6; }
-  50% { box-shadow: 0 0 80px rgba(212,175,55,0.35), inset 0 0 80px rgba(212,175,55,0.1); opacity: 1; }
+  0%, 100% { box-shadow: 0 0 30px rgba(201,169,97,0.08), inset 0 0 30px rgba(201,169,97,0.04); opacity: 0.5; }
+  50% { box-shadow: 0 0 50px rgba(201,169,97,0.18), inset 0 0 50px rgba(201,169,97,0.06); opacity: 0.85; }
 }
 
 .smoke-particle {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201,169,97,0.04) 0%, transparent 70%);
   animation: smokeRise 8s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes smokeRise {
-  0% { transform: translateY(0) scale(1); opacity: 0.4; }
-  50% { transform: translateY(-40px) scale(1.2); opacity: 0.2; }
+  0% { transform: translateY(0) scale(1); opacity: 0.35; }
+  50% { transform: translateY(-40px) scale(1.2); opacity: 0.18; }
   100% { transform: translateY(-80px) scale(1.5); opacity: 0; }
 }
 
 .btn-gold {
   position: relative;
-  background: linear-gradient(135deg, #D4AF37, #A08820);
-  color: #0A0A0A;
+  background: linear-gradient(135deg, #C9A961, #9C8147);
+  color: #161616;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   border-radius: 4px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -102,24 +104,36 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent);
   opacity: 0;
   transition: opacity 0.3s;
 }
 .btn-gold:hover::after { opacity: 1; }
-.btn-gold:hover { box-shadow: 0 0 30px rgba(212,175,55,0.5); transform: translateY(-1px); }
+.btn-gold:hover { box-shadow: 0 0 30px rgba(201,169,97,0.4); transform: translateY(-1px); }
 
 .btn-ghost {
-  border: 1px solid rgba(212,175,55,0.4);
-  color: #D4AF37;
+  border: 1px solid rgba(201,169,97,0.35);
+  color: #C9A961;
   border-radius: 4px;
   background: transparent;
   transition: all 0.3s ease;
 }
 .btn-ghost:hover {
-  border-color: #D4AF37;
-  background: rgba(212,175,55,0.08);
-  box-shadow: 0 0 20px rgba(212,175,55,0.2);
+  border-color: #C9A961;
+  background: rgba(201,169,97,0.06);
+  box-shadow: 0 0 20px rgba(201,169,97,0.15);
+}
+
+.btn-ghost-dark {
+  border: 1px solid rgba(27,42,74,0.25);
+  color: #1B2A4A;
+  border-radius: 4px;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+.btn-ghost-dark:hover {
+  border-color: #1B2A4A;
+  background: rgba(27,42,74,0.05);
 }
 
 .horizontal-scroll {
@@ -132,7 +146,7 @@ body {
 .horizontal-scroll::-webkit-scrollbar { display: none; }
 .horizontal-scroll > * { scroll-snap-align: start; }
 
-.atmosphere-mode { filter: saturate(1.2) brightness(1.05); }
+.atmosphere-mode { filter: saturate(1.1) brightness(1.03); }
 
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
