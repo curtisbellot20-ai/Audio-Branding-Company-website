@@ -2,17 +2,12 @@
 
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
+import PositioningStrip from '@/components/PositioningStrip';
+import AudioShowcase from '@/components/AudioShowcase';
 import TheProblem from '@/components/TheProblem';
-import SoundJourney from '@/components/SoundJourney';
-import BeforeAfter from '@/components/BeforeAfter';
 import Services from '@/components/Services';
-import AudioMoodSelector from '@/components/AudioMoodSelector';
-import BrandQuiz from '@/components/BrandQuiz';
-import HowItWorks from '@/components/HowItWorks';
-import Pricing from '@/components/Pricing';
-import GrowthClub from '@/components/GrowthClub';
-import Testimonials from '@/components/Testimonials';
-import FAQ from '@/components/FAQ';
+import Process from '@/components/Process';
+import ReusableEverywhere from '@/components/ReusableEverywhere';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 import HaloCursor from '@/components/HaloCursor';
@@ -25,17 +20,12 @@ export default function Home() {
       <Navigation atmosphereMode={false} />
       <MusicButton />
       <Hero />
+      <PositioningStrip />
+      <AudioShowcase />
       <TheProblem />
-      <SoundJourney />
-      <BeforeAfter />
       <Services />
-      <AudioMoodSelector />
-      <BrandQuiz />
-      <HowItWorks />
-      <Pricing />
-      <GrowthClub />
-      <Testimonials />
-      <FAQ />
+      <Process />
+      <ReusableEverywhere />
       <FinalCTA />
       <Footer />
     </main>

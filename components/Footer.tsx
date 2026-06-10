@@ -5,20 +5,17 @@ const footerLinks = [
   {
     heading: 'Services',
     links: [
-      { label: 'Custom Audio Branding Songs', href: '#services' },
-      { label: 'Custom Jingles', href: '#services' },
-      { label: 'Halo Essential', href: '#pricing' },
-      { label: 'Halo Signature', href: '#pricing' },
-      { label: 'Halo Growth Club', href: '#pricing' },
+      { label: 'Halo Essentials', href: '#services' },
+      { label: 'Halo Identity', href: '#services' },
+      { label: 'Halo Growth Club', href: '#services' },
     ],
   },
   {
-    heading: 'Company',
+    heading: 'Studio',
     links: [
-      { label: 'How It Works', href: '#how-it-works' },
-      { label: 'Pricing', href: '#pricing' },
-      { label: 'Client Stories', href: '#testimonials' },
-      { label: 'FAQ', href: '#faq' },
+      { label: 'Hear The Difference', href: '#audio-showcase' },
+      { label: 'Our Process', href: '#process' },
+      { label: 'Where Your Audio Lives', href: '#everywhere' },
     ],
   },
   {
@@ -42,8 +39,8 @@ export default function Footer() {
             <div className="mb-6">
               <HaloLogo size="md" />
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              The Sound Department For Small Businesses. We create custom audio branding that makes your business unforgettable.
+            <p className="text-gray-500 text-sm leading-relaxed mb-4">
+              A boutique sonic branding studio helping small businesses become unforgettable through sound.
             </p>
             <p className="text-halo-gold text-xs font-semibold tracking-widest uppercase mb-6">Your brand. Heard.</p>
             <p className="text-white text-sm font-semibold mb-3">Contact Us</p>

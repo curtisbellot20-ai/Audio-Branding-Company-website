@@ -6,9 +6,9 @@ import HaloLogo from '@/components/HaloLogo';
 
 const navLinks = [
   { label: 'Services', href: '#services' },
-  { label: 'Sound Journey', href: '#sound-journey' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Hear The Difference', href: '#audio-showcase' },
+  { label: 'Process', href: '#process' },
+  { label: 'Contact', href: '#final-cta' },
 ];
 
 export default function Navigation({ atmosphereMode }: { atmosphereMode: boolean }) {
@@ -33,12 +33,10 @@ export default function Navigation({ atmosphereMode }: { atmosphereMode: boolean
         role="banner"
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
           <a href="#" aria-label="Halo Audio — Home" className="hover:opacity-90 transition-opacity">
             <HaloLogo size="sm" />
           </a>
 
-          {/* Desktop nav */}
           <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} className="text-sm text-gray-400 hover:text-halo-gold transition-colors duration-300 tracking-wide">
@@ -49,7 +47,7 @@ export default function Navigation({ atmosphereMode }: { atmosphereMode: boolean
 
           <div className="hidden md:flex items-center gap-4">
             {atmosphereMode && <span className="text-xs text-halo-gold/70 animate-pulse tracking-widest uppercase">◉ Atmosphere</span>}
-            <a href="#quiz" className="btn-gold px-5 py-2.5 text-sm font-semibold">Get My Sound</a>
+            <a href="mailto:myhaloaudio@gmail.com?subject=Audio%20Strategy%20Call" className="btn-gold px-5 py-2.5 text-sm font-semibold">Book a Call</a>
           </div>
 
           <button className="md:hidden text-gray-300 hover:text-halo-gold transition-colors" onClick={() => setMenuOpen((v) => !v)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>
@@ -70,7 +68,7 @@ export default function Navigation({ atmosphereMode }: { atmosphereMode: boolean
               {navLinks.map((link) => (
                 <a key={link.href} href={link.href} className="text-lg font-medium text-gray-200 hover:text-halo-gold transition-colors" onClick={() => setMenuOpen(false)}>{link.label}</a>
               ))}
-              <a href="#quiz" className="btn-gold px-6 py-3 text-center font-semibold text-sm mt-2" onClick={() => setMenuOpen(false)}>Get My Custom Brand Sound</a>
+              <a href="mailto:myhaloaudio@gmail.com?subject=Audio%20Strategy%20Call" className="btn-gold px-6 py-3 text-center font-semibold text-sm mt-2" onClick={() => setMenuOpen(false)}>Book an Audio Strategy Call</a>
             </nav>
           </motion.div>
         )}
