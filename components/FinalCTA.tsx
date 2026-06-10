@@ -22,8 +22,8 @@ export default function FinalCTA() {
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.3, duration: 0.8 }}>
-          <a href="mailto:myhaloaudio@gmail.com?subject=Audio%20Strategy%20Call" className="btn-gold inline-block px-12 py-5 text-base font-bold tracking-wide">
-            Book an Audio Strategy Call
+          <a href="#contact" className="btn-gold inline-block px-12 py-5 text-base font-bold tracking-wide">
+            Get In Touch
           </a>
         </motion.div>
       </div>

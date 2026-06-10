@@ -125,8 +125,8 @@ export default function Hero() {
 
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.65 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 w-full">
-          <a href="mailto:myhaloaudio@gmail.com?subject=Audio%20Strategy%20Call" className="btn-gold px-10 py-4 text-sm md:text-base font-bold tracking-wide w-full sm:w-auto text-center">
-            Book an Audio Strategy Call
+          <a href="#contact" className="btn-gold px-10 py-4 text-sm md:text-base font-bold tracking-wide w-full sm:w-auto text-center">
+            Get In Touch
           </a>
           <a href="#audio-showcase" className="btn-ghost px-8 py-4 text-sm md:text-base font-semibold w-full sm:w-auto text-center">
             Hear Examples

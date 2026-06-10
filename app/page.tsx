@@ -9,6 +9,7 @@ import Services from '@/components/Services';
 import Process from '@/components/Process';
 import ReusableEverywhere from '@/components/ReusableEverywhere';
 import FinalCTA from '@/components/FinalCTA';
+import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import HaloCursor from '@/components/HaloCursor';
 import MusicButton from '@/components/AtmosphereToggle';
@@ -27,6 +28,7 @@ export default function Home() {
       <Process />
       <ReusableEverywhere />
       <FinalCTA />
+      <ContactSection />
       <Footer />
     </main>
   );

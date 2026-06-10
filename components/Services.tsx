@@ -74,7 +74,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-              <a href="mailto:myhaloaudio@gmail.com" className={`text-center py-3.5 px-4 rounded-lg text-sm font-bold tracking-wide transition-all duration-300 ${offer.highlight ? 'btn-gold' : 'btn-ghost'}`}>
+              <a href="#contact" className={`text-center py-3.5 px-4 rounded-lg text-sm font-bold tracking-wide transition-all duration-300 ${offer.highlight ? 'btn-gold' : 'btn-ghost'}`}>
                 {offer.cta}
               </a>
             </motion.article>

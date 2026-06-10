@@ -8,7 +8,7 @@ const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Hear The Difference', href: '#audio-showcase' },
   { label: 'Process', href: '#process' },
-  { label: 'Contact', href: '#final-cta' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navigation({ atmosphereMode }: { atmosphereMode: boolean }) {
@@ -47,7 +47,7 @@ export default function Navigation({ atmosphereMode }: { atmosphereMode: boolean
 
           <div className="hidden md:flex items-center gap-4">
             {atmosphereMode && <span className="text-xs text-halo-gold/70 animate-pulse tracking-widest uppercase">◉ Atmosphere</span>}
-            <a href="mailto:myhaloaudio@gmail.com?subject=Audio%20Strategy%20Call" className="btn-gold px-5 py-2.5 text-sm font-semibold">Book a Call</a>
+            <a href="#contact" className="btn-gold px-5 py-2.5 text-sm font-semibold">Contact</a>
           </div>
 
           <button className="md:hidden text-gray-300 hover:text-halo-gold transition-colors" onClick={() => setMenuOpen((v) => !v)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>
@@ -68,7 +68,7 @@ export default function Navigation({ atmosphereMode }: { atmosphereMode: boolean
               {navLinks.map((link) => (
                 <a key={link.href} href={link.href} className="text-lg font-medium text-gray-200 hover:text-halo-gold transition-colors" onClick={() => setMenuOpen(false)}>{link.label}</a>
               ))}
-              <a href="mailto:myhaloaudio@gmail.com?subject=Audio%20Strategy%20Call" className="btn-gold px-6 py-3 text-center font-semibold text-sm mt-2" onClick={() => setMenuOpen(false)}>Book an Audio Strategy Call</a>
+              <a href="#contact" className="btn-gold px-6 py-3 text-center font-semibold text-sm mt-2" onClick={() => setMenuOpen(false)}>Get In Touch</a>
             </nav>
           </motion.div>
         )}
