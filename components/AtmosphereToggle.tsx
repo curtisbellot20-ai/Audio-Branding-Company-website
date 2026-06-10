@@ -12,7 +12,9 @@ export default function MusicButton() {
 
   useEffect(() => {
     if (!audioEl) {
-      audioEl = new Audio('/Halo Audio. .mp3');
+      audioEl = new Audio();
+      audioEl.preload = 'none';
+      audioEl.src = '/Halo Audio. .mp3';
       audioEl.loop = true;
       audioEl.volume = 0;
     }
