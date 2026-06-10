@@ -10,6 +10,7 @@ import AudioMoodSelector from '@/components/AudioMoodSelector';
 import BrandQuiz from '@/components/BrandQuiz';
 import HowItWorks from '@/components/HowItWorks';
 import Pricing from '@/components/Pricing';
+import GrowthClub from '@/components/GrowthClub';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
 import FinalCTA from '@/components/FinalCTA';
@@ -32,6 +33,7 @@ export default function Home() {
       <BrandQuiz />
       <HowItWorks />
       <Pricing />
+      <GrowthClub />
       <Testimonials />
       <FAQ />
       <FinalCTA />

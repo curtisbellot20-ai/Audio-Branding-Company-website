@@ -38,28 +38,6 @@ const plans = [
       'MP3 + WAV Delivery',
     ],
   },
-  {
-    name: 'Halo Growth Club',
-    tagline: 'Keep Your Brand Sounding Fresh',
-    price: '$150',
-    period: '/month',
-    highlight: false,
-    badge: 'Subscription',
-    cta: 'Join The Club',
-    ctaHref: 'mailto:myhaloaudio@gmail.com',
-    features: [
-      '60% Off All Future Halo Audio Orders While Subscribed',
-      'Priority Client Status',
-      'Faster Project Turnaround',
-      'Access To Exclusive Promotions',
-      'Lock In Preferred Pricing',
-    ],
-    savingsNote: {
-      label: 'Halo Essential',
-      regular: '$497',
-      member: '$198.80',
-    },
-  },
 ];
 
 export default function Pricing() {
@@ -68,7 +46,7 @@ export default function Pricing() {
   return (
     <section id="pricing" ref={ref} className="relative py-32 px-6" aria-labelledby="pricing-heading">
       <div aria-hidden="true" className="absolute inset-0 bg-halo-dark" />
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-4xl mx-auto">
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="flex items-center gap-3 mb-6 justify-center">
           <div className="w-8 h-px bg-halo-gold/60" />
@@ -86,7 +64,7 @@ export default function Pricing() {
           Every package includes 100% original audio, full commercial rights, and files ready to deploy across every platform.
         </motion.p>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {plans.map((plan, i) => (
             <motion.article key={plan.name}
               initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -129,17 +107,6 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-
-              {/* Savings callout for Growth Club */}
-              {'savingsNote' in plan && plan.savingsNote && (
-                <div className="mb-6 rounded-xl border border-halo-gold/20 bg-halo-gold/5 p-4 text-sm">
-                  <p className="text-gray-400 mb-2 font-semibold text-xs uppercase tracking-wider">Savings Example</p>
-                  <p className="text-gray-300 font-semibold mb-1">{plan.savingsNote.label}</p>
-                  <p className="text-gray-500 line-through text-xs">Regular Price: {plan.savingsNote.regular}</p>
-                  <p className="text-halo-gold font-bold text-lg">Member Price: {plan.savingsNote.member}</p>
-                  <p className="text-gray-600 text-xs mt-1">Plus applicable taxes and fees</p>
-                </div>
-              )}
 
               <a href={plan.ctaHref}
                 className={`text-center py-3.5 px-4 rounded-lg text-sm font-bold tracking-wide transition-all duration-300 ${
