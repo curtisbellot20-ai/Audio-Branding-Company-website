@@ -6,6 +6,7 @@ import PositioningStrip from '@/components/PositioningStrip';
 import AudioShowcase from '@/components/AudioShowcase';
 import TheProblem from '@/components/TheProblem';
 import Services from '@/components/Services';
+import GrowthClub from '@/components/GrowthClub';
 import Process from '@/components/Process';
 import ReusableEverywhere from '@/components/ReusableEverywhere';
 import FinalCTA from '@/components/FinalCTA';
@@ -25,6 +26,7 @@ export default function Home() {
       <AudioShowcase />
       <TheProblem />
       <Services />
+      <GrowthClub />
       <Process />
       <ReusableEverywhere />
       <FinalCTA />

@@ -11,6 +11,7 @@ const offers = [
     tagline: 'For businesses that need one memorable branded audio asset.',
     includes: ['Short sonic logo', '15-second brand jingle', 'Social-ready audio file', 'Commercial usage guidance'],
     cta: 'Start With Essentials',
+    href: '#contact',
     highlight: false,
   },
   {
@@ -20,15 +21,17 @@ const offers = [
     tagline: 'For businesses that want a complete sound branding system.',
     includes: ['Sonic logo', '30–45 second brand audio', 'CTA version', 'Social media cutdowns', 'Audio usage strategy'],
     cta: 'Build My Identity',
+    href: '#contact',
     highlight: true,
   },
   {
     name: 'Halo Growth Club',
-    price: '$150',
+    price: '$50',
     period: '/month',
-    tagline: 'Private member access for businesses that want ongoing audio marketing ideas and preferred pricing.',
-    includes: ['Member pricing', 'Priority scheduling', 'Monthly audio marketing ideas', 'Seasonal promo concepts', 'Early access to new services'],
-    cta: 'Request Access',
+    tagline: 'Membership for businesses that want ongoing audio marketing resources, insights, and 20% off all Halo Audio services.',
+    includes: ['20% off all Halo Audio services', 'Audio branding resource library', 'Monthly Halo Insider newsletter', 'Seasonal marketing calendars', 'Locked-in member pricing'],
+    cta: 'Join Growth Club',
+    href: '#growth-club',
     highlight: false,
   },
 ];
@@ -84,7 +87,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact" className={`text-center py-3.5 px-4 rounded-lg text-sm font-bold tracking-wide transition-all duration-300 ${offer.highlight ? 'btn-gold' : 'btn-ghost'}`}>
+              <a href={offer.href} className={`text-center py-3.5 px-4 rounded-lg text-sm font-bold tracking-wide transition-all duration-300 ${offer.highlight ? 'btn-gold' : 'btn-ghost'}`}>
                 {offer.cta}
               </a>
             </motion.article>
