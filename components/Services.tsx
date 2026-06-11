@@ -6,6 +6,8 @@ import { Check } from 'lucide-react';
 const offers = [
   {
     name: 'Halo Essentials',
+    price: '$497',
+    period: 'one-time',
     tagline: 'For businesses that need one memorable branded audio asset.',
     includes: ['Short sonic logo', '15-second brand jingle', 'Social-ready audio file', 'Commercial usage guidance'],
     cta: 'Start With Essentials',
@@ -13,6 +15,8 @@ const offers = [
   },
   {
     name: 'Halo Identity',
+    price: '$1,997',
+    period: 'one-time',
     tagline: 'For businesses that want a complete sound branding system.',
     includes: ['Sonic logo', '30–45 second brand audio', 'CTA version', 'Social media cutdowns', 'Audio usage strategy'],
     cta: 'Build My Identity',
@@ -20,6 +24,8 @@ const offers = [
   },
   {
     name: 'Halo Growth Club',
+    price: '$150',
+    period: '/month',
     tagline: 'Private member access for businesses that want ongoing audio marketing ideas and preferred pricing.',
     includes: ['Member pricing', 'Priority scheduling', 'Monthly audio marketing ideas', 'Seasonal promo concepts', 'Early access to new services'],
     cta: 'Request Access',
@@ -61,10 +67,14 @@ export default function Services() {
             >
               {offer.highlight && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="text-xs px-3 py-1 rounded-full font-bold bg-halo-gold text-halo-black">Recommended</span>
+                  <span className="text-xs px-3 py-1 rounded-full font-bold bg-halo-gold text-halo-black">Most Popular</span>
                 </div>
               )}
-              <h3 className="font-display font-bold text-xl text-white mb-3">{offer.name}</h3>
+              <h3 className="font-display font-bold text-xl text-white mb-2">{offer.name}</h3>
+              <div className="flex items-baseline gap-1 mb-3">
+                <span className={`font-display font-bold text-3xl ${offer.highlight ? 'text-halo-gold' : 'text-white'}`}>{offer.price}</span>
+                <span className="text-gray-500 text-sm">{offer.period}</span>
+              </div>
               <p className="text-gray-500 text-sm leading-relaxed mb-6">{offer.tagline}</p>
               <ul className="space-y-3 mb-8 flex-1">
                 {offer.includes.map((item) => (
